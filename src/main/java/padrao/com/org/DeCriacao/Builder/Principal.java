@@ -16,5 +16,6 @@ public class Principal {
                 .builder();
 
         pedido.informacoes();
+        pedido.informacoesDialog();
     }
 }

@@ -1,5 +1,6 @@
 package padrao.com.org.DeCriacao.Builder;
 
+import javax.swing.*;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -11,19 +12,19 @@ public class Pedido {
     private Cliente cliente;
     private Vendedor vendedor;
 
-    public BigDecimal getValor(){
+    public BigDecimal getValor() {
         BigDecimal total = BigDecimal.ZERO;
 
-        for (Produto produto : produtos){
+        for (Produto produto : produtos) {
 
             total = total.add(produto.getValor().multiply(new BigDecimal(produto.getQuantidade())));
         }
         return total;
     }
 
-    public int getTotalProdutos(){
+    public int getTotalProdutos() {
         int total = 0;
-        for (Produto produto : produtos){
+        for (Produto produto : produtos) {
 
             total += produto.getQuantidade();
 
@@ -64,10 +65,23 @@ public class Pedido {
     }
 
     public void informacoes() {
-        System.out.println("N Pedido: " +getNumeroPedido());
-        System.out.println("cliente: " +getCliente().getNome());
-        System.out.println("Vendedor: " +getVendedor().getNome());
-        System.out.println("Produto(s): " +getTotalProdutos());
-        System.out.println("Valor total: R$ " +getValor());
+        System.out.println("N Pedido: " + getNumeroPedido());
+        System.out.println("cliente: " + getCliente().getNome());
+        System.out.println("Vendedor: " + getVendedor().getNome());
+        System.out.println("Produto(s): " + getTotalProdutos());
+        System.out.println("Valor total: R$ " + getValor());
     }
+
+    public void informacoesDialog() {
+
+        JOptionPane.showMessageDialog(null,
+               "N Pedido: "       + getNumeroPedido()+ "\n"
+                + "cliente: "        + getCliente().getNome() + "\n"
+                + "Vendedor: "       + getVendedor().getNome() + "\n"
+                + "Produto(s): "     + getTotalProdutos()+ "\n"
+                + "Valor total: R$ " + getValor());
+
+    }
+
+
 }
